@@ -1,0 +1,8 @@
+@import "tailwindcss";
+*{
+  font-family: Outfit;
+}
+#root{
+  min-height: 100vh;
+  display: flex;
+}
