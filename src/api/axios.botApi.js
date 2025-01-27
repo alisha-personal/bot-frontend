@@ -12,6 +12,19 @@ export const setAuthToken = (token) => {
     }
 };
 
+export const check_backend_status = async () => {
+    try {
+        const response = await apiClient.get('/status')
+        if (response.data.status === 'active') {
+            return true;
+        } else {
+            return false;
+        };
+    } catch (error) {
+        console.error(error);
+    };
+};
+
 export const initial_get_response = async (query) => {
     try {
         const response = await apiClient.post(`/respond`,{

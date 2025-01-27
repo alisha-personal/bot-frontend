@@ -2,18 +2,31 @@ import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom
 import './App.css';
 import Home from './pages/Home';
 import AuthPage from './pages/Login';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect, useState } from 'react';
+// import { setStatus } from './store/slices/serverStatusSlice';
+// import { check_backend_status } from './api/axios.botApi';
 
 function App() {
-
+  // const [serverStatus, setServerStatus] = useState((state)=>state.serverStatus.value);
+  // const dispatch = useDispatch();
   const ProtectedRoute = () => {
     const isAuthenticated = useSelector((state)=>state.userLoggedIn.value);
     // console.log('From app.jsx : ', isAuthenticated);
-  
+    
     return isAuthenticated 
      ? <Outlet /> 
       : <Navigate to="/login" replace />;
   };
+
+  // useEffect(()=>{
+  //   if (!serverStatus) {
+  //     var currentStatus = check_backend_status();
+  //     if (currentStatus) {
+  //       dispatch(setStatus());
+  //     };
+  //   }
+  // },[]);
 
   return (
     <>
