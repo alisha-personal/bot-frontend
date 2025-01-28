@@ -25,6 +25,15 @@ export const check_backend_status = async () => {
     };
 };
 
+export const get_user_sessions = async () => {
+    try {
+        const response = await apiClient.get('/user/sessions')
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    };
+};
+
 export const initial_get_response = async (query) => {
     try {
         const response = await apiClient.post(`/respond`,{
@@ -51,7 +60,16 @@ export const session_get_response = async (query, sessionID) => {
 export const login = async(formDat) => {
     try {
         const response = await apiClient.post(`/login`,formDat);
-        return response.data;
+        if (response.status!=400) {
+            return {
+                status : response.status,
+                ...response.data
+            }
+        } else {
+            return {
+                status: response.status
+            }
+        }
     } catch (error) {
         console.error(error);
     }

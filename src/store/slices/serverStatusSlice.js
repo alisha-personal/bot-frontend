@@ -12,5 +12,5 @@ const serverStatusSlice = createSlice({
     }
 });
 
-export const {setStatus} = createSlice.actions;
+export const {setStatus} = serverStatusSlice.actions;
 export default serverStatusSlice.reducer;

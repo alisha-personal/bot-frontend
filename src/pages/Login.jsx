@@ -7,7 +7,7 @@ import { toggle } from '../store/slices/userLogInSlice';
 import { login, register } from '../api/axios.botApi';
 import { setToken } from '../store/slices/authTokenSlice';
 import { useSelector } from 'react-redux';
-
+import { setUserName } from '../store/slices/userNameSlice';
 
 const AuthPage = () => {
   const navigate = useNavigate();
@@ -47,11 +47,15 @@ const AuthPage = () => {
                     throw "Empty email";
                 };
             } else {
-                login(formData).then((response) => {
-                    console.log('Login successful');
-                    dispatch(toggle());
-                    dispatch(setToken(response?.access_token));
-                    navigate('/home')
+                login(formData).then((response) => { 
+                    // console.log('Response : ', response);
+                    if (response){
+                        console.log('Login successful');
+                        dispatch(setUserName(response?.user_name));
+                        dispatch(toggle());
+                        dispatch(setToken(response?.access_token));
+                        navigate('/home');
+                    }
                 }).catch((error)=> {
                     console.error('Login Failed :',error);
                 });

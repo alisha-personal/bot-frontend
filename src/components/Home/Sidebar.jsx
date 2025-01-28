@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Menu, ChevronRight, ChevronLeft } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import { SiderbarSession } from "./SiderbarSession";
 const staticSessions = [
     {
@@ -14,7 +13,8 @@ const staticSessions = [
 
 function Sidebar({
     isCollapsed, 
-    setIsCollapsed
+    setIsCollapsed,
+    sessions
 }) {
 
     return (
@@ -28,7 +28,7 @@ function Sidebar({
                     </p>
                 </div>
                 <div className="flex flex-col gap-y-2">
-                    {staticSessions.map((value, index) => {
+                    {sessions.map((value, index) => {
                         return (
                             <SiderbarSession 
                                 key={index}
