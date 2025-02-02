@@ -1,0 +1,29 @@
+/* Sideways bounce animation */
+@keyframes sideways-bounce {
+    0% {
+        transform: translateX(0) scale(1);
+      }
+      20% {
+        transform: translateX(40px) scale(1.05); /* Right bounce with scale */
+      }
+      35% {
+        transform: translateX(-30px) scale(1.03); /* Left bounce with reduced scale */
+      }
+      50% {
+        transform: translateX(25px) scale(1.04); /* Right bounce */
+      }
+      65% {
+        transform: translateX(-15px) scale(1.02); /* Left bounce */
+      }
+      80% {
+        transform: translateX(10px) scale(1.01); /* Final small bounce */
+      }
+      100% {
+        transform: translateX(0) scale(1); /* Return to original */
+      }
+  }
+  
+  .sideways {
+    animation: sideways-bounce 5s ease-in-out 1;
+    position: relative; /* or absolute/fixed depending on your needs */
+  }

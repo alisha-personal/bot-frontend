@@ -1,5 +1,7 @@
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { SiderbarSession } from "./SiderbarSession";
+import './Sidebar.css';
+
 const staticSessions = [
     {
         session_name : "Hello this is new person in a new place and new place new things",
@@ -56,7 +58,7 @@ function Sidebar({
             <div className="flex max-w-[2rem] h-full items-center justify-center">
                 <button
                     onClick={() => setIsCollapsed(!isCollapsed)}
-                    className="w-md text-gray-400 hover:text-gray-800 hover:scale-125 duration-300 focus:outline-none"
+                    className="w-md text-gray-400 hover:text-gray-800 hover:scale-125 duration-300 focus:outline-none sideways"
                 >
                     {
                         isCollapsed 
