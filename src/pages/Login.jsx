@@ -41,6 +41,7 @@ const AuthPage = () => {
                 if (email) {
                     authPackage['email'] = email;
                     register(authPackage).then((response)=>{
+                      toast.success('You are registered to Destiny now.')
                       console.log('From Login.jsx : ', response);
                       setIsLogin(!isLogin);
                     })
