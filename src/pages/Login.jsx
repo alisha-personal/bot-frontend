@@ -8,6 +8,7 @@ import { login, register } from '../api/axios.botApi';
 import { setToken } from '../store/slices/authTokenSlice';
 import { useSelector } from 'react-redux';
 import { setUserName } from '../store/slices/userNameSlice';
+import { toast } from 'react-toastify';
 
 const AuthPage = () => {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ const AuthPage = () => {
                 login(formData).then((response) => { 
                     // console.log('Response : ', response);
                     if (response){
+                        toast.success('Welcome to Destiny')
                         console.log('Login successful');
                         dispatch(setUserName(response?.user_name));
                         dispatch(toggle());
