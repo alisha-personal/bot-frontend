@@ -3,6 +3,7 @@ import './App.css';
 import Home from './pages/Home';
 import AuthPage from './pages/Login';
 import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 // import { useEffect, useState } from 'react';
 // import { setStatus } from './store/slices/serverStatusSlice';
 // import { check_backend_status } from './api/axios.botApi';
@@ -39,6 +40,7 @@ function App() {
           <Route path='/' element={<Navigate to={'/login'} />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </>
   );
 };

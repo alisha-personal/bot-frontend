@@ -68,7 +68,7 @@ const AuthPage = () => {
         } catch (error) {
             console.error("Error : ", error);            
         };
-        console.log('After Submit : ', useSelector((state)=> state));
+        // console.log('After Submit : ', useSelector((state)=> state));
     };
     
   return (

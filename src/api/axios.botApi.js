@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const apiClient = axios.create({
     baseURL: "http://localhost:8000",
@@ -81,6 +82,7 @@ export const login = async(formDat) => {
         }
     } catch (error) {
         console.error(error);
+        toast.error('Login Failed')
     }
 };
 
