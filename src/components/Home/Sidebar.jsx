@@ -16,7 +16,8 @@ function Sidebar({
     setIsCollapsed,
     sessions,
     setMessages,
-    setSessionId
+    setSessionId,
+    handleNewSession
 }) {
 
     return (
@@ -42,7 +43,14 @@ function Sidebar({
                     })}
                 </div>
                 <div className="SideBarBottom h-[4.75rem]">
-
+                    <div className="h-full w-full flex items-center justify-center">
+                        <button
+                            onClick={handleNewSession} 
+                            className="flex px-4 py-2 border rounded-lg hover:bg-gray-200 hover:scale-[1.05] duration-200"
+                        >
+                            New Session
+                        </button>
+                    </div>
                 </div>
             </div>
             <div className="flex max-w-[2rem] h-full items-center justify-center">

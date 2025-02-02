@@ -43,6 +43,12 @@ function Home() {
         };
     },[messages]);
 
+    useEffect(()=>{
+        get_user_sessions().then((response)=>{
+            setSessions(response);
+        });
+    }, [sessionId])
+
     const handleSendMessage = async () => {
         if (!input.trim()) return;
         
@@ -84,6 +90,12 @@ function Home() {
         }
       };
 
+      const handleNewSession = () => {
+        setMessages([]);
+        setShowChat(false);
+        setSessionId(null);
+      }
+
     return (
         <>
             <div className="h-screen w-screen flex flex-row">
@@ -93,6 +105,7 @@ function Home() {
                     sessions={sessions}
                     setMessages={setMessages}
                     setSessionId={setSessionId}
+                    handleNewSession={handleNewSession}
                 />
                 <div className="HomePage w-screen flex flex-col">
                     <div className="TopSection  flex flex-row justify-between p-6">
