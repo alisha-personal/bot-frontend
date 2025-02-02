@@ -13,7 +13,7 @@ import ConversationContainer from "../components/Home/Chat/ConversationContainer
 function Home() {
 
     const [userLoggedIn, setUserLoggedIn] = useState(useSelector((state)=>state.userLoggedIn.value));
-    console.log('Redux state : ', useSelector((state)=>state))
+    // console.log('Redux state : ', useSelector((state)=>state))
     const [userName, setUserName] = useState(useSelector((state)=>state.userName.value) || 'Anonym')
     setAuthToken(useSelector((state)=>state.authToken.value));
 
@@ -28,14 +28,20 @@ function Home() {
     const [sessionId, setSessionId] = useState(null); 
     
     useEffect(()=>{
-        if (!sessions) {
-            let sess;
-            async () => {
-                sess = await get_user_sessions();
-                setSessions(sess)
-            };
+        if (sessions.length === 0) {
+            get_user_sessions().then((response)=>{
+                setSessions(response);
+                // console.log('Sessions : ', response);
+            })
         }
-    },[])
+    },[]);
+
+    useEffect(()=>{
+        if (messages.length != 0) {
+            setShowChat(true);
+            // console.log("Messages : ", messages);
+        };
+    },[messages]);
 
     const handleSendMessage = async () => {
         if (!input.trim()) return;
@@ -85,6 +91,8 @@ function Home() {
                     isCollapsed={isCollapsed}
                     setIsCollapsed={setIsCollapsed} 
                     sessions={sessions}
+                    setMessages={setMessages}
+                    setSessionId={setSessionId}
                 />
                 <div className="HomePage w-screen flex flex-col">
                     <div className="TopSection  flex flex-row justify-between p-6">

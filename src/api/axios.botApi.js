@@ -57,6 +57,15 @@ export const session_get_response = async (query, sessionID) => {
     }
 };
 
+export const load_conversation = async (sessionID) => {
+    try {   
+        const response = await apiClient.get(`/user/sessions/${sessionID}/messages`);
+        return response.data.messages;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 export const login = async(formDat) => {
     try {
         const response = await apiClient.post(`/login`,formDat);

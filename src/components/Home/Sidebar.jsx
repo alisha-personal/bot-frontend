@@ -14,7 +14,9 @@ const staticSessions = [
 function Sidebar({
     isCollapsed, 
     setIsCollapsed,
-    sessions
+    sessions,
+    setMessages,
+    setSessionId
 }) {
 
     return (
@@ -32,7 +34,9 @@ function Sidebar({
                         return (
                             <SiderbarSession 
                                 key={index}
-                                SessionObj={value} 
+                                SessionObj={value}
+                                setMessages={setMessages}
+                                setSessionId={setSessionId}
                             />
                         )
                     })}
